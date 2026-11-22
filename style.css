@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -21,14 +22,30 @@ body {
   display: flex;
   flex-direction: column;
   padding: 15px;
+  overflow: hidden;
 }
 
+/* Website Logo */
+.logo-area {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.logo-area img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Main Heading */
 h1 {
   background: #075e54;
   color: white;
   text-align: center;
   padding: 15px;
-  margin: -15px -15px 15px;
+  margin: 0 -15px 15px;
 }
 
 h2 {
@@ -37,6 +54,12 @@ h2 {
   margin: 10px 0;
 }
 
+h3 {
+  color: #075e54;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
 input {
   width: 100%;
   padding: 13px;
@@ -44,8 +67,14 @@ input {
   border: 1px solid #ccc;
   border-radius: 25px;
   font-size: 15px;
+  outline: none;
 }
 
+input:focus {
+  border-color: #075e54;
+}
+
+/* Buttons */
 button {
   width: 100%;
   padding: 13px;
@@ -58,6 +87,75 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+  background: #064e46;
+}
+
+/* Chat Section */
+#chatSection {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+#chatSection[hidden],
+#authSection[hidden] {
+  display: none;
+}
+
+/* Profile */
+.profile {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#profilePhoto {
+  width: 100px;
+  height: 100px;
+  max-width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #08665c;
+  display: block;
+  margin: 15px auto;
+}
+
+#photoInput {
+  font-size: 13px;
+}
+
+/* Friends List */
+.friends-area {
+  margin-bottom: 10px;
+}
+
+.friend-item img {
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Chat Header */
+#chatHeader {
+  padding: 12px;
+  background: #075e54;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Typing Indicator */
+#typingIndicator {
+  font-size: 13px;
+  color: #075e54;
+  padding: 4px;
+}
+
+/* Messages */
 #messages {
   flex: 1;
   min-height: 200px;
@@ -89,37 +187,7 @@ button {
   margin-right: auto;
 }
 
-.profile {
-  text-align: center;
-  margin-bottom: 15px;
-}
-
-#profilePhoto {
-  width: 75px;
-  height: 75px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #075e54;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-#photoInput {
-  font-size: 13px;
-}
-
-#chatSection {
-  flex: 1;
-  min-height: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-#chatSection[hidden],
-#authSection[hidden] {
-  display: none;
-}
-
+/* Desktop */
 @media (min-width: 500px) {
   body {
     padding: 20px;
@@ -132,23 +200,14 @@ button {
   }
 }
 
-/* Profile Photo Size */
-#profilePhoto {
-  width: 100px;
-  height: 100px;
-  max-width: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 15px auto;
-  border: 4px solid #08665c;
-}
+/* Small Mobile */
+@media (max-width: 360px) {
+  .logo-area img {
+    width: 80px;
+    height: 80px;
+  }
 
-/* Friends List DP */
-.friend-item img {
-  width: 45px;
-  height: 45px;
-  min-width: 45px;
-  border-radius: 50%;
-  object-fit: cover;
+  .container {
+    padding: 10px;
+  }
 }
