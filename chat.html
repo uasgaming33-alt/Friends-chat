@@ -1,1 +1,70 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends Chat</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #e5ddd5;
+    }
+    header {
+      background: #075e54;
+      color: white;
+      padding: 18px;
+      font-size: 22px;
+    }
+    .chat {
+      display: flex;
+      align-items: center;
+      background: white;
+      padding: 15px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+    .avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: #25d366;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-size: 22px;
+      margin-right: 14px;
+    }
+    .name {
+      font-weight: bold;
+    }
+    .status {
+      color: gray;
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>Friends Chat</header>
+
+<div class="chat" onclick="openChat('Friend')">
+  <div class="avatar">F</div>
+  <div>
+    <div class="name">Friend</div>
+    <div class="status">Tap to open chat</div>
+  </div>
+</div>
+
+<script>
+function openChat(name) {
+  window.location.href =
+    "message.html?name=" + encodeURIComponent(name);
+}
+</script>
+
+</body>
+</html>
+
