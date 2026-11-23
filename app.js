@@ -745,7 +745,7 @@ onAuthStateChanged(auth, async user => {
       );
 
       setupOnlineStatus(user);
-      showChat();
+location.replace("chat.html");
 
     } catch (error) {
       showError(error);
