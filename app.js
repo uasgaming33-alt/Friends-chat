@@ -249,11 +249,40 @@ function startListeners() {
 
   const uid = auth.currentUser.uid;
 
-  stopUsers = onSnapshot(collection(db, "users"), snapshot => {
-    allUsers = snapshot.docs.map(d => d.data());
-    renderFriends();
-  }, showError);
+stopUsers = onSnapshot(collection(db, "users"), async snapshot => {
+  try {
+    allUsers = await Promise.all(
+      snapshot.docs.map(async d => {
+        const userData = d.data();
 
+        // पहले users collection से फोटो लो
+        if (userData.photoURL) {
+          return userData;
+        }
+
+        // फोटो नहीं मिली तो profiles collection चेक करो
+        const profileSnap = await getDoc(
+          doc(db, "profiles", d.id)
+        );
+
+        if (profileSnap.exists()) {
+          return {
+            ...userData,
+            photoURL: profileSnap.data().photoURL || ""
+          };
+        }
+
+        return userData;
+      })
+    );
+
+    renderFriends();
+
+  } catch (error) {
+    showError(error);
+  }
+}, showError);
+  
   stopRequests = onSnapshot(
     query(
       collection(db, "friendRequests"),
